@@ -15,7 +15,10 @@ body {
     margin-left: 0;
     margin-right: 0;
 }
-
+.alert-success {
+    text-align: center;
+    left: 35px;
+}
 .navbar {
     min-height: 50px;
     height: 50px;

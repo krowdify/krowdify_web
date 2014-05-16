@@ -278,10 +278,23 @@ function statusPost(){
         headers: headers,
         success: function(data, textStatus) {
             var compose = $('.compose');
-            $(compose).html('Compose New Post');
+            $(compose).html('Compose a Post');
             $(compose).removeClass("expanded");
             $(compose).parent().find('.tools, .buttons').hide();
             $('#post').modal('hide');
+            buildPost(1,data);
+            $(post).css('display','none');
+            console.log($('.stream .profile').length);
+            if($('.activity').length !== 0){
+                
+            }
+            else if($('.stream .profile').length !== 0){
+                $(post).insertAfter(".stream .profile").fadeIn("slow");
+            }
+            else{
+                $('.stream').prepend($(post).fadeIn("Slow"));
+            }
+            $('.alert-banner > div > div').slideDown(200).delay(3000).slideUp(200);
         },
         error: function(e){
             if(e.responseText){
