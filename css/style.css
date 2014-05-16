@@ -1,0 +1,576 @@
+body {
+    padding-top: 50px;
+}
+
+.starter-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.content {
+    margin-top: 50px;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.navbar {
+    min-height: 50px;
+    height: 50px;
+    border-bottom: none;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    background-color: transparent;
+    border-bottom: 5px solid #fff;
+}
+
+.navbar-inverse .navbar-nav > li:hover > a,
+.navbar-inverse .navbar-nav > li:focus > a {
+    height: 50px;
+    background-color: transparent;
+    border-bottom: 5px solid #ffffff;
+    transition: all .15s ease-in-out;
+}
+
+.nav > li {
+    float: left;
+}
+
+.navbar-header {
+    text-align: center;
+}
+
+.navbar-nav {
+    margin: 0;
+    float: left;
+}
+
+.navbar-header .navbar-logo {
+    margin-top: 5px;
+}
+
+.navbar-nav > li > a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    line-height: 21px;
+    letter-spacing: 1px;
+    height: 50px;
+}
+
+@media (max-width: 767px) {
+    .navbar-nav > li > a {
+        text-indent: -9999px;
+        overflow: hidden;
+        width: 50px;
+        position: relative;
+    }
+
+    .navbar-nav > li > a > .glyphicon {
+        position: absolute;
+        left: 17px;
+        top: 15px;
+        text-indent: 0;
+        font-size: 16px;
+    }
+
+    .navbar-inverse .navbar-right > li > a > .glyphicon {
+        top: 10px;
+        font-size: 20px;
+    }
+
+    .navbar-inverse .navbar-right > li > a > .border {
+        top: 10px;
+        font-size: 15px;
+    };
+}
+
+.navbar-header {
+    width: 100%;
+}
+
+.navbar-right {
+    float: right!important;
+    font-size: 15px;
+}
+
+.navbar-right > li > a > span {
+    padding: 5px;
+    top: -3px;
+    font-size: 20px;
+}
+
+.navbar-right > li > a, .navbar-right > li > a > span.border {
+    opacity: .7;
+}
+
+.navbar-right > li > a > span.border {
+    border-radius: 8px;
+    border: 2px solid #fff;
+    padding: 5px;
+    top: -4px;
+    font-size: 15px;
+}
+
+.navbar-inverse .navbar-right > li > a > .glyphicon {
+    width: 30px;
+}
+
+.navbar-inverse .navbar-right > li:hover > a ,  .navbar-inverse .navbar-right > li:focus > a {
+    height: 50px;
+    background-color: transparent;
+    border-bottom: none;
+    transition: all .15s ease-in-out;
+    opacity: 1;
+}
+
+.navbar-inverse .navbar-right > li:hover > a > span.border ,  .navbar-inverse .navbar-right > li:focus > a > span.border {
+    transition: all .15s ease-in-out;
+    opacity: 1;
+}
+
+.profile {
+    padding:0;
+}
+.profile-image {
+    width: 82px;
+    height: 82px;
+    position: absolute;
+    top: -30px;
+    border-radius: 5px;
+    border: 4px solid #ECEDED;
+    left: 10px;
+}
+
+@media (max-width: 992px) {
+    .profile-image {
+        width: 50px;
+        height: 50px;
+        top: -15px;
+    };
+}
+
+@media (max-width: 768px) {
+    .profile-image {
+        width: 82px;
+        height: 82px;
+        top: -30px;
+    };
+}
+
+.profile .fullname, .profile .username {
+    min-height:21px;
+}
+.profile, .post, .activity {
+    margin: 10px auto;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    min-height: 100px;
+    padding:0;
+}
+.panel-body {
+    padding:10px;
+}
+.activity {
+    padding: 0;
+    min-height: 40px;
+}
+.activity > div.panel-footer {
+    padding: 0 10px;
+}
+.activity .links {
+    margin-left:30px;
+}
+.activity .icon, .activity .user-icon {
+    width:24px;
+    height:24px;
+    margin-right:5px;
+}
+
+.username {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.media {
+    margin-bottom: 20px;
+}
+
+.media > img {
+    max-width: 100%;
+    border-radius: 5px;
+    border: 4px solid #fff;
+}
+
+.profile .stats {
+    margin-top: 15px;
+}
+
+.stats > thead > tr > th, .stats-post > thead > tr > th {
+    text-transform: uppercase;
+    border-bottom: 0;
+    padding-bottom: 0;
+    font-size: 11px;
+    width: 33%;
+}
+
+.stats > tbody > tr > td, .stats-post > tbody > tr > td {
+    font-size: 18px;
+    font-weight:bold;
+    border-top: 0;
+    padding: 0;
+
+}
+.stats > tbody > tr > td.followers:hover, .stats > tbody > tr > td.following:hover {
+   cursor: pointer;
+}
+
+.stream .post .panel-body > .uname, .stream .post .panel-body > div.usertext, .stream .post .panel-body > div.media {
+    padding-left: 55px;
+    padding-right: 0;
+}
+
+.stream .post > .panel-group {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.stream-profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    left: 10px;
+    top: 10px;
+    position: absolute;
+    z-index: 10;
+}
+
+.stream-comment-profile-image {
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    float: left;
+    margin-top: 13px;
+    margin-left: 9px;
+}
+
+@media (max-width: 768px) {
+    .stream {
+        padding: 0;
+    };
+}
+.stream .panel-footer {
+    padding:0;
+}
+.stream-hidden{
+    display:none;
+}
+.stream-likes {
+    margin-top: 10px;
+padding-left: 0;
+padding-right: 5px;
+}
+.post-nav {
+    list-style: none;
+    padding: 0;
+}
+
+.post-nav > li {
+    padding-right: 10px;
+}
+
+.panel-group, .panel-body {
+    padding: 10px;
+    margin: 0;
+    
+}
+
+.stats-post {
+    border-right: 3px solid #fff;
+    margin: 10px 0;
+}
+
+.stats-post > thead > tr > th {
+    padding-left: 0;
+    width: 50%;
+    padding: 0;
+    font-size: 20px;
+}
+
+.stats-post > tbody > tr > td {
+    padding-left: 0;
+    width: 50%;
+}
+
+.comment-profile-image, .reply-profile-image, .list-profile-image {
+    width: 32px;
+    height: 32px;
+    border-radius: 3px;
+    left: 18px;
+    top: 3px;
+    position: absolute;
+    z-index: 10;
+}
+.list-profile-image {
+    width:40px;
+    height:40px;
+}
+.user-list-profile-image{
+    width: 27px;
+    height: 27px;
+    border-radius: 3px;
+    margin-right:10px;
+}
+#userModal .modal-title {
+    min-height:24px;
+}
+.user-list-row  {
+    min-height:50px;
+}
+.reply > .reply-profile-image {
+    left: 28px;
+    top: 13px;
+}
+
+.row-comment {
+    margin-top:10px;
+}
+.comment {
+    margin-bottom: 10px;
+        min-height:40px;
+    padding-left:0;
+}
+
+.comment > div {
+    padding-left: 55px;
+    font-size: 12px;
+    font-weight: 400;
+
+}
+
+.create-post {
+    border-radius: 0px 5px;
+    padding: 0;
+    border-radius: 0 0 0 5px;
+    border-radius: 0px 0px 5px 5px;
+    color: #333;
+    margin-top: 10px;
+    border-top: 1px solid #bbb;
+}
+
+.compose, .reply-input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #bbb;
+    line-height: 30px;
+    color: #333;
+    margin-left: 8.33%;
+    padding: 3px;
+    min-height: 38px;
+}
+
+.reply {
+
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+    background-color: #f3f3f3;
+    min-height: 40px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.reply .reply-input, .reply .buttons {
+    margin-left: 52px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.reply-input.expanded {
+    margin-bottom:10px;
+}
+
+.expanded {
+    height: 120px;
+    font-size: 13px;
+    line-height: 20px;
+    overflow: auto;
+}
+
+.tools {
+    padding: 3px;
+    font-size: 20px;
+    display: none;
+}
+
+.buttons {
+    margin-bottom: 10px;
+    padding: 0px;
+    display: none;
+}
+
+.buttons > button {
+    text-transform: uppercase;
+}
+
+.buttons > button > span {
+    margin-right: 3px;
+}
+
+.charcounter {
+    height:20px;
+    line-height: 30px;
+    font-weight: 700;
+    color: #ddd;
+}
+
+.remove-button {
+    position: absolute;
+    z-index: 1000;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    background-color: rgba(0,0,0,0.3);
+    border: none;
+    border-bottom-left-radius: 3px;
+}
+
+.btn-file input {
+    text-indent: -9999px;
+}
+
+.remove-button:hover,  .remove-button:active {
+    background-color: rgba(0,0,0,0.7);
+}
+
+.more {
+    border-radius: 0px 5px;
+    padding: 0;
+    border-radius: 0 0 0 5px;
+    border-radius: 0px 0px 5px 5px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    margin-top: -10px;
+    cursor: pointer;
+}
+
+.arrow-box {
+position:absolute;
+left: 44px;
+bottom: 0;
+z-index: 1000;
+}
+
+.arrow-box:after, .arrow-box:before {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.arrow-box:after {
+    border-color: rgba(243, 243, 243, 0);
+    border-top-color: #f3f3f3;
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+.arrow-box:before {
+    border-color: rgba(153, 153, 153, 0);
+    border-top-color: #999;
+    border-width: 11px;
+    margin-left: -11px;
+}
+
+
+/* Login css start */
+
+
+.login {
+    margin: 10px auto;
+    padding: 20px;
+    width: 250px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.login img {
+    position: relative;
+    left: 32%;
+    margin: 20px 0 30px;
+    width: 80px;
+    border: 5px solid #989393;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+
+.login-logo {
+    margin: 15% auto 0;
+    width: 300px;
+}
+
+.login input {
+    margin-bottom: 10px;
+}
+
+.login .btn {
+    width: 215px;
+}
+
+.login .new-user {
+    font-size: 11px;
+}
+
+.form-group > label {
+    font-weight: bold;
+}
+/* Login css end */
+
+.follow-user, .unfollow-user {
+    display:none;
+    width:85px;
+    margin-top: -10px;
+}
+
+.users {
+    margin-bottom: 10px;
+}
+.new-posts {
+    display:none;
+    text-align: center;
+border-radius: 3px;
+padding: 3px;
+margin-top: 10px;
+    -webkit-animation: pusate 1s infinite alternate;
+    -moz-animation: pusate 1s infinite alternate;
+    -animation: pusate 1s infinite alternate;
+}
+.new-posts:hover {
+    cursor: pointer;
+}
+
+@-webkit-keyframes pusate {
+    from { opacity: .75; }
+    to { opacity:1; }
+}
+@-moz-keyframes pusate {
+    from { opacity: .75; }
+    to { opacity:1; }
+}
+@keyframes pusate {
+    from { opacity: .75; }
+    to { opacity:1; }
+}
+

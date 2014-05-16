@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A complete admin panel theme">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="smronju">
+
+    <title>Krowdify Login</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/bootstrap.upload.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+
+    <!--[if IE 8]>
+    <link href="css/ie8.css" rel="stylesheet">
+    <![endif]-->
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="login">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <ul class="nav navbar-nav">
+
+                </ul>
+                <img class="navbar-logo" src="images/krowdify_logo.png" height="35">
+                <ul class="nav navbar-nav navbar-right">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+
+        <div class="row-fluid">
+
+            <div class="span12">
+                <div class="login panel panel-default">
+                    <form action="#" method="get">
+                        <input type="text" name="email" placeholder="Email" class="span12"/>
+                        <input type="password" name="password" placeholder="Password" class="span12"/>
+                       <!-- <input type="hidden" name="client_id" value="514c7ac0a989b21634fd56ff"/> -->
+                        <input type="submit" name="login" value="Login" class="btn btn-info span12"/>
+                    </form>
+                    <span class="new-user">New to Krowdify? <a href="#" data-toggle="modal" data-target="#myModal">Sign up now »</a></span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Join Krowdify Today</h4>
+                </div>
+
+                <form role="form" data-toggle="validator" class="register" id="register">
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="registerFullname">Full Name</label>
+                            <input type="text" class="form-control" name="registerFullname" name="registerFullname" placeholder="Enter your first & last name." required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerUsername">Username</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">@</span>
+                                <input type="text" class="form-control" name="registerUsername" placeholder="Enter a username" data-validation-callback-callback="checkusername" required>
+                            </div>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerEmail">Email address</label>
+                            <input type="text" class="form-control" name="registerEmail" placeholder="Email Address" data-validation-callback-callback="checkemail" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerPassword">Password</label>
+                            <input type="password" name="registerPassword" minlength="8" data-toggle="validator" data-minlength="6" class="form-control" placeholder="Password" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerPasswordConfirm">Re-enter Password</label>
+                            <input type="password" class="form-control" name="registerPasswordConfirm" data-validation-matches-match="registerPassword" data-validation-matches-message="Passwords do not match.">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="iconimage" class="control-label">Profile Picture</label>
+                            <div class="fileinput fileinput-new clearfix" data-provides="fileinput">
+                                <div class="fileinput-new thumbnail" style="width: 100px; height: 100px;">
+                                    <img src="http://placehold.it/90x90" alt="...">
+                                </div>
+                                <div class="fileinput-preview fileinput-exists thumbnail clearfix" style="max-width: 100px; max-height: 100px;"></div>
+                                <div>
+                                    <span class="btn btn-info btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+                                    <a href="#" class="btn btn-warning fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="form-group">
+                            
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary btn-register">Register</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/bootstrap.validation.js"></script>
+    <script src="./js/bootstrap.upload.js"></script>
+    <script src="./js/jquery.cookie.js"></script>
+    <script src="./js/init.js"></script>
+    <script src="./js/login.js"></script>
+    <script>
+    if($.cookie("token")){
+        window.location = "stream.html";  
+    }
+    </script>
+
+    <script type="text/javascript">
+
+
+</script>
+
+</body>
+</html>
