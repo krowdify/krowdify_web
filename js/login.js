@@ -88,7 +88,6 @@ $( "#register" ).submit(function( event ) {
     data['username'] = $('input[name="registerUsername"]').val();
     data['data'] = $('.fileinput-preview img').attr('src');
     data['client_id'] = clientid;
-    console.log(data);
     reqUrl = authbase + "/user/register";
 
     $.support.cors = true;

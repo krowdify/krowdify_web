@@ -40,7 +40,8 @@ $('.compose').click(function(e) {
     }
     if( $(this).html() == $('.compose-holder').html()) {
         if(user['_id'] != JSON.parse($.cookie("krowd")).user._id){
-            $('.compose').html('@' + user['username'] + '&nbsp;');
+            $('.compose').html('');
+            $(this).html('@' + user['username'] + '&nbsp;');
                 setCursorToEnd($(this).get(0));
         }else{
             $('.compose').html('');
