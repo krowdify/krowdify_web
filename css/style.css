@@ -631,6 +631,12 @@ margin-bottom: 60px;
     .alert-warning {
     width: 100%;
     }
+    .affix {
+        position:static;
+    }
+}
+.affix {
+    top:85px;
 }
 .row-likes {
     border-bottom: 1px solid rgba(0,0,0,.1);

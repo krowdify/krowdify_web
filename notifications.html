@@ -42,215 +42,216 @@ oooooo
 </head>
 <body>
   <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <ul class="nav navbar-nav">
-                    <li><a href="stream.html"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                    <li class="active"><a href="notifications.html"><span class="glyphicon glyphicon-bullhorn"></span> Notifications</a></li>
-                    <li><a href="user.html"><span class="glyphicon glyphicon-user"></span> Me</a></li>
-                </ul>
-                <img class="navbar-logo" src="images/krowdify_logo.png" height="35">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span></a>
-                        <ul id="nav" class="dropdown-menu">
-                            <li class="dropdown-header">Theme Selector</li>
-                                <li><a href="#" rel="css/theme.yeti.css">Yeti (Default CSS)</a></li>
-                                <li><a href="#" rel="css/theme.darkly.css">Darkly</a></li>
-                                <li><a href="#" rel="css/theme.superhero.css">Superhero</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">Logout</a></li>
+    <div class="container">
+      <div class="navbar-header">
+        <ul class="nav navbar-nav">
+          <li><a href="stream.html"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+          <li class="active"><a href="notifications.html"><span class="glyphicon glyphicon-bullhorn"></span> Notifications</a></li>
+          <li><a href="user.html"><span class="glyphicon glyphicon-user"></span> Me</a></li>
+        </ul>
+        <img class="navbar-logo" src="images/krowdify_logo.png" height="35">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span></a>
+            <ul id="nav" class="dropdown-menu">
+              <li class="dropdown-header">Theme Selector</li>
+                  <li><a href="#" rel="css/theme.yeti.css">Yeti (Default CSS)</a></li>
+                  <li><a href="#" rel="css/theme.darkly.css">Darkly</a></li>
+                  <li><a href="#" rel="css/theme.superhero.css">Superhero</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Logout</a></li>
 
-                        </ul>
-                    </li>
-                    <li><a href="#send"><span class="glyphicon glyphicon-send border" data-toggle="modal" data-target="#post"></span></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-  <div class="container alert-banner" style=" position: relative;">
-    <div class="row">
-    <div class="col-md-6 col-sm-7 col-xs-7 col-xs-offset-2 col-sm-offset-4 col-md-offset-3 alert-success well-sm" style="position: absolute; z-index: 1000; display:none">
-      Your status has been posted
+            </ul>
+          </li>
+          <li><a href="#send"><span class="glyphicon glyphicon-send border" data-toggle="modal" data-target="#post"></span></a></li>
+        </ul>
+      </div>
     </div>
   </div>
+  <div class="container alert-banner" style=" position: relative;">
+    <div class="row">
+      <div class="col-md-6 col-sm-7 col-xs-7 col-xs-offset-2 col-sm-offset-4 col-md-offset-3 alert-success well-sm" style="position: absolute; z-index: 1000; display:none">
+        Your status has been posted
+      </div>
+    </div>
   </div>
   <div class="container content">         
     <div class="row">
-<div class="col-md-4 col-sm-5 clearfix left-column"> 
+      <div class="col-md-4 col-sm-5 clearfix left-column">
+        <div data-spy="affix" data-offset-top="10" data-clampedwidth=".left-column"> 
 
-            <div class="profile clearfix panel panel-default"> 
-                <div class="panel-body">
-                    <img src="http://placehold.it/90x90" class="profile-image">
-                    <div class="fullname col-md-8 col-md-offset-4 col-sm-9 col-sm-offset-3 col-xs-10 col-xs-offset-2"></div>
-                    <div class="username col-md-8 col-md-offset-4 col-sm-9 col-sm-offset-3 col-xs-10 col-xs-offset-2"></div>
-                    <div class="clearfix">
-                        <table class="table stats">
-                            <thead>
-                                <tr>
-                                    <th class="text-center text-muted">Posts</th>
-                                    <th class="text-center text-muted">Following</th>
-                                    <th class="text-center text-muted">Followers</th>
-                                </tr>
-                            </thead>
-                            <tr>
-                                <td class="text-center text-primary posts"></td>
-                                <td class="text-center text-primary following userModal" data-toggle="modal" data-target="#userModal"></td>
-                                <td class="text-center text-primary followers userModal" data-toggle="modal" data-target="#userModal"></td>
-                            </tr>
-                        </table>
+          <div class="profile clearfix panel panel-default"> 
+            <div class="panel-body">
+              <img src="http://placehold.it/90x90" class="profile-image">
+              <div class="fullname col-md-8 col-md-offset-4 col-sm-9 col-sm-offset-3 col-xs-10 col-xs-offset-2"></div>
+              <div class="username col-md-8 col-md-offset-4 col-sm-9 col-sm-offset-3 col-xs-10 col-xs-offset-2"></div>
+              <div class="clearfix">
+                <table class="table stats">
+                  <thead>
+                    <tr>
+                      <th class="text-center text-muted">Posts</th>
+                      <th class="text-center text-muted">Following</th>
+                      <th class="text-center text-muted">Followers</th>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td class="text-center text-primary posts"></td>
+                    <td class="text-center text-primary following userModal" data-toggle="modal" data-target="#userModal"></td>
+                    <td class="text-center text-primary followers userModal" data-toggle="modal" data-target="#userModal"></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="create-post panel-footer">
+              <div class="row">
+                <div class="col-md-10 col-sm-10 col-xs-10 col-md-offset-1 compose" contenteditable="true">Compose a Post</div>
+                <div class="col-md-10 col-sm-10 col-xs-10 col-md-offset-1 tools">
+                  <div class="fileinput fileinput-new clearfix" data-provides="fileinput">
+                    <div class="fileinput-new thumbnail" style="width: 0; height: 0; display:none;">
+                      <img src="http://placehold.it/90x90" alt="...">
                     </div>
-                </div>
-                <div class="create-post panel-footer">
-                    <div class="row">
-                        <div class="col-md-10 col-sm-10 col-xs-10 col-md-offset-1 compose" contenteditable="true">Compose a Post</div>
-                        <div class="col-md-10 col-sm-10 col-xs-10 col-md-offset-1 tools">
-                            <div class="fileinput fileinput-new clearfix" data-provides="fileinput">
-                                <div class="fileinput-new thumbnail" style="width: 0; height: 0; display:none;">
-                                    <img src="http://placehold.it/90x90" alt="...">
-                                </div>
-                                <div class="fileinput-preview fileinput-exists thumbnail clearfix col-md-12 col-sm-12 col-xs-12" style=""></div>
-                                <div>
-                                    <span class="btn-file"><span class="fileinput-new"><span class="glyphicon glyphicon-camera text-primary"> </span> </span><input type="file" name="..." id="file"></span>
-                                    <a href="#" class="btn btn-warning fileinput-exists remove-button" data-dismiss="fileinput">X</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-10 col-sm-10 col-xs-10 col-md-offset-1 buttons"><span class="charcounter">0</span><button type="button" class="btn btn-info btn-xs pull-right submit-post"><span class="glyphicon glyphicon-send"> </span> Post</button></div>
+                    <div class="fileinput-preview fileinput-exists thumbnail clearfix col-md-12 col-sm-12 col-xs-12" style=""></div>
+                    <div>
+                      <span class="btn-file"><span class="fileinput-new"><span class="glyphicon glyphicon-camera text-primary"> </span> </span><input type="file" name="..." id="file"></span>
+                      <a href="#" class="btn btn-warning fileinput-exists remove-button" data-dismiss="fileinput">X</a>
                     </div>
+                  </div>
                 </div>
+                <div class="col-md-10 col-sm-10 col-xs-10 col-md-offset-1 buttons"><span class="charcounter">0</span><button type="button" class="btn btn-info btn-xs pull-right submit-post"><span class="glyphicon glyphicon-send"> </span> Post</button></div>
+              </div>
+            </div>
+
+          </div>
+
+
+
+          <div class="clearfix panel panel-primary new-users" style="display:none"> 
+            <div class="panel-heading">
+              <h3 class="panel-title">Who to Follow</h3>
+            </div>
+            <div class="panel-body">
+              <div class="new-user-body">
+                <div class="row new-user-list-row clearfix">
+                  <div>
+                    <a href=""><img src="" class="list-profile-image" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"></a>
+                    <div class="user-string"><a class="fullname" href=""></a> <span class="username"></span></div>
+
+                    <button type="button" class="btn btn-primary btn-xs follow-user">+<span class="glyphicon glyphicon-user"> </span> Follow</button>
+                    <button type="button" class="btn btn-xs unfollow-user btn-success"><span class="glyphicon glyphicon-fire"> </span> Following</button>
+                  </div>
+                </div>
+              </div>
 
             </div>
 
-
-
-            <div class="clearfix panel panel-primary new-users" style="display:none"> 
-                <div class="panel-heading">
-                  <h3 class="panel-title">Who to Follow</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="new-user-body">
-                    <div class="row new-user-list-row clearfix">
-                        <div>
-                            <a href=""><img src="" class="list-profile-image" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"></a>
-                            <div class="user-string"><a class="fullname" href=""></a> <span class="username"></span></div>
-                            
-                            <button type="button" class="btn btn-primary btn-xs follow-user">+<span class="glyphicon glyphicon-user"> </span> Follow</button>
-                            <button type="button" class="btn btn-xs unfollow-user btn-success"><span class="glyphicon glyphicon-fire"> </span> Following</button>
-                        </div>
-                    </div>
-                </div>
-                    
-                </div>
-
-            </div>
+          </div>
         </div>
-
+      </div>
       <div class="col-md-7 col-sm-8 stream">
         <div class="col-md-12 row new-posts alert-info " style="display:none"><span class="number"></span> New Post<span class="suffix"></span></div>
         <div class="row row-activity" style="display:none">
           <div class="col-md-12 activity clearfix panel panel-default">
             <div class="panel-body">
-            <div class="row">
-              <abbr class="timeago pull-right"></abbr>
-              <img class="icon pull-left" src="http://krowd:9090/img/default_profile_3.png">
-              <p class=""></p>
-            </div>
-            <div class="row links">
-              <div class="users"><a href=""><img class="user-icon" src=""></a></div>
-              <a href="#" class="view-conversation">view conversation</a>
-            </div>
-            <div class="col-md-11 col-sm-11 col-xs-11 links">
+              <div class="row">
+                <abbr class="timeago pull-right"></abbr>
+                <img class="icon pull-left" src="http://krowd:9090/img/default_profile_3.png">
+                <p class=""></p>
+              </div>
+              <div class="row links">
+                <div class="users"><a href=""><img class="user-icon" src=""></a></div>
+                <a href="#" class="view-conversation">view conversation</a>
+              </div>
+              <div class="col-md-11 col-sm-11 col-xs-11 links">
 
+              </div>
             </div>
-          </div>
             <div class="test panel-footer clearfix" style="display:none">
-              
+
             </div>
           </div>
 
         </div>
       </div>
-                <div class="row row-post" style="display:none">
-                    <div class="col-md-11 post clearfix panel panel-default">
-                        <div class="panel-body">
-                            <abbr class="timeago pull-right" title=""></abbr>
-                            <a href=""><img src="" class="stream-profile-image" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"></a>
-                            <div class="col-md-9 col-sm-9 col-xs-9 uname"><a href="" class="username text-primary"></a></div>
-                            <div class="col-md-9 col-sm-9 col-xs-9 usertext"></div>
-                            <div class="col-md-11 col-sm-11 col-xs-11 media"></div>
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <ul class="post-nav">
-                                    <li class="pull-left"><a class="toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-expand"></span> expand</a></li>
-                                    <li class="pull-right"><a href="#" class="post-like"><span class="glyphicon glyphicon-heart"></span> like</a></li>
-                                    <li class="pull-right"><a href="#" class="post-unlike" style="display:none">Unlike</a></li>
+      <div class="row row-post" style="display:none">
+        <div class="col-md-11 post clearfix panel panel-default">
+          <div class="panel-body">
+            <abbr class="timeago pull-right" title=""></abbr>
+            <a href=""><img src="" class="stream-profile-image" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"></a>
+            <div class="col-md-9 col-sm-9 col-xs-9 uname"><a href="" class="username text-primary"></a></div>
+            <div class="col-md-9 col-sm-9 col-xs-9 usertext"></div>
+            <div class="col-md-11 col-sm-11 col-xs-11 media"></div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <ul class="post-nav">
+                <li class="pull-left"><a class="toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-expand"></span> expand</a></li>
+                <li class="pull-right"><a href="#" class="post-like"><span class="glyphicon glyphicon-heart"></span> like</a></li>
+                <li class="pull-right"><a href="#" class="post-unlike" style="display:none">Unlike</a></li>
 
-                                    <li class="pull-right"><a href="#" class="post-comment"><span class="glyphicon glyphicon-comment"></span> Comment</a></li>
-                                </ul>
+                <li class="pull-right"><a href="#" class="post-comment"><span class="glyphicon glyphicon-comment"></span> Comment</a></li>
+              </ul>
 
-                            </div>
+            </div>
 
-                        </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12 panel-footer" id="accordion">
-                            <div id="collapseOne" class="panel-collapse collapse out">
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12 panel-footer" id="accordion">
+            <div id="collapseOne" class="panel-collapse collapse out">
 
-                                <div class="row">
-                                    <div class="row row-likes">
-                                        <div class="col-md-4 col-sm-4 col-xs-4">
-                                            <table class="table stats-post">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="text-muted text-center"><span class="glyphicon glyphicon-comment"></span></th>
-                                                        <th class="text-muted text-center"><span class="glyphicon glyphicon-heart"></span></th>
-                                                    </tr>
-                                                </thead>
-                                                <tr>
-                                                    <td class="text-primary text-center stat-comments"></td>
-                                                    <td class="text-primary text-center stat-likes"></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="col-md-8 col-sm-8 col-xs-8 stream-likes">
+              <div class="row">
+                <div class="row row-likes">
+                  <div class="col-md-4 col-sm-4 col-xs-4">
+                    <table class="table stats-post">
+                      <thead>
+                        <tr>
+                          <th class="text-muted text-center"><span class="glyphicon glyphicon-comment"></span></th>
+                          <th class="text-muted text-center"><span class="glyphicon glyphicon-heart"></span></th>
+                        </tr>
+                      </thead>
+                      <tr>
+                        <td class="text-primary text-center stat-comments"></td>
+                        <td class="text-primary text-center stat-likes"></td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-8 stream-likes">
 
-                                        </div>
-                                    </div>
-
-                                    <div class="row load-more">
-                                        <div class="col-md-12 col-sm-12 col-xs-12 more text-center label-info">
-                                            View Previous Comments
-                                        </div>
-                                    </div>
-                                    <div class="row row-comment">
-
-                                        <div class="col-md-12 col-sm-12 col-xs-12 comment">
-                                            <a href=""><img src="" class="comment-profile-image" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"></a>
-
-                                            <div class="usertext"><a href="" class="username text-primary"></a></div>
-                                            <div class="text-primary comment-time">
-                                                <abbr class="timeago" title=""></abbr>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="row">
-                                        <div class="col-md-12 col-sm-12 col-xs-12 reply label-default">
-                                            <span class="arrow-box"></span>
-                                            <img src="" class="reply-profile-image">
-                                            <div class="col-md-10 col-sm-10 col-xs-10 reply-input" contenteditable="true">Post a Reply</div>
-                                            <div class="col-md-10 col-sm-10 col-xs-10 buttons"><span class="charcounter">0</span><button type="button" class="btn btn-info btn-xs pull-right submit-comment"><span class="glyphicon glyphicon-send"> </span> Reply</button></div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-
-                    </div>
+                  </div>
                 </div>
+
+                <div class="row load-more">
+                  <div class="col-md-12 col-sm-12 col-xs-12 more text-center label-info">
+                    View Previous Comments
+                  </div>
+                </div>
+                <div class="row row-comment">
+
+                  <div class="col-md-12 col-sm-12 col-xs-12 comment">
+                    <a href=""><img src="" class="comment-profile-image" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"></a>
+
+                    <div class="usertext"><a href="" class="username text-primary"></a></div>
+                    <div class="text-primary comment-time">
+                      <abbr class="timeago" title=""></abbr>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 col-xs-12 reply label-default">
+                    <span class="arrow-box"></span>
+                    <img src="" class="reply-profile-image">
+                    <div class="col-md-10 col-sm-10 col-xs-10 reply-input" contenteditable="true">Post a Reply</div>
+                    <div class="col-md-10 col-sm-10 col-xs-10 buttons"><span class="charcounter">0</span><button type="button" class="btn btn-info btn-xs pull-right submit-comment"><span class="glyphicon glyphicon-send"> </span> Reply</button></div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
     </div>
   </div>
   <!-- Modal -->
@@ -316,9 +317,9 @@ oooooo
     </div>
   </div>
 
-<div class="stream-hidden"></div>
-<div class="compose-holder" style="display:none"></div>
-<div class="reply-holder" style="display:none"></div>
+  <div class="stream-hidden"></div>
+  <div class="compose-holder" style="display:none"></div>
+  <div class="reply-holder" style="display:none"></div>
 <!-- Bootstrap core JavaScript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
@@ -333,13 +334,13 @@ oooooo
   <script src="./js/script.js"></script>
   <script>
   getActivity();
-        $(window).scroll(function() {
-            if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-                if($('.stream').attr('data-next')){
-                    getActivity($('.stream').attr('data-next'));
-                }
-            }
-        });
+  $(window).scroll(function() {
+    if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+      if($('.stream').attr('data-next')){
+        getActivity($('.stream').attr('data-next'));
+      }
+    }
+  });
 
   $('.row-post').remove();
   </script>
