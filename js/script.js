@@ -75,6 +75,7 @@ $('#post').on('show.bs.modal', function (e) {
 
 $('.submit-post').click(function(){
     statusPost();
+    
 });
 
 $('.compose').keyup(function() {
@@ -88,7 +89,7 @@ $('.new-posts').click(function(){
     $.each( $('.stream-hidden > div'), function( k, v ) {
         $(v).hide().insertAfter(".new-posts").fadeIn("slow");
     });
-
+return false;
 });
 
 
@@ -154,7 +155,7 @@ $('.userModal').click(function() {
         },
         crossDomain: true
     });
-
+return false;
 });
 
 
@@ -261,7 +262,7 @@ function followUserAction(){
             },
             crossDomain: true
         });
-
+return false;
 });
 
 
@@ -310,7 +311,7 @@ $('.unfollow-user').click(function() {
         },
         crossDomain: true
     });
-
+return false;
 });
 }
 function getLikes(gid){
@@ -606,9 +607,11 @@ $('.reply-input').keyup(function() {
 
 $('.submit-comment').click(function(){
     commentPost($(this).closest(".post").attr("data-id"));
+    return false;
 });
 $('.load-more').on('click',function(e) {
     getComments($(this), $(this).attr('data-aid'), {"startid": $(this).attr('data-startid'), "page": parseInt($(this).attr('data-page'), 10) + 1, "newpage": $(this).attr('data-newpage'), "limit": $(this).attr('data-limit')});
+    return false;
 });
 $('.more').hover(function() {
     $(this).removeClass('label-info').addClass('label-primary');
@@ -882,6 +885,7 @@ function getActivity(query,newposts){
                 $('.timeago', activity).timeago();
                 $('.view-conversation', activity).click(function(){
                     $(this).closest('.panel').find('.test').stop().slideToggle("slow");
+                    return false;
                 });
 
                 if(newposts){
@@ -905,6 +909,8 @@ function getActivity(query,newposts){
                         $('.test', activity).html(post);
                     }
 
+                }else{
+                    $('.view-conversation', activity).remove();
                 }
                 
             });
