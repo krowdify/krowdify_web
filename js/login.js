@@ -1,4 +1,14 @@
 $("input,select,textarea").not("[type=submit]").jqBootstrapValidation({ bindEvents: ['blur','change'] });
+if($.cookie("css")) {
+    $("link#bootstrap").attr("href",$.cookie("css"));
+}
+$(document).ready(function() {
+    $("#nav li a").click(function() {
+        $("link#bootstrap").attr("href",$(this).attr('rel'));
+        $.cookie("css",$(this).attr('rel'), {expires: 365, path: '/'});
+        return false;
+    });
+});
 
 
 
@@ -111,7 +121,7 @@ error: function(e){
         error = {};
         error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
     }
-    $('.login').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+    $('.login').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
     $('.btn').removeAttr('disabled');
     $('.btn').toggleClass('loading disabled');
 },
@@ -169,7 +179,7 @@ $('.login .btn').on('click',function(e) {
                 error = {};
                 error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
             }
-            $('.login').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+            $('.login').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
             $('.btn').removeAttr('disabled');
             $('.btn').toggleClass('loading disabled');
         },

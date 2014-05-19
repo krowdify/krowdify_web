@@ -1,4 +1,15 @@
 
+if($.cookie("css")) {
+    $("link#bootstrap").attr("href",$.cookie("css"));
+}
+$(document).ready(function() {
+    $("#nav li a").click(function() {
+        $("link#bootstrap").attr("href",$(this).attr('rel'));
+        $.cookie("css",$(this).attr('rel'), {expires: 365, path: '/'});
+        return false;
+    });
+});
+
 if(!$.cookie("token")){
     window.location = "index.html?next=" + window.location.href;
 }
@@ -11,8 +22,10 @@ var posthtml = $('.row-post').html();
 var activityhtml = $('.row-activity').html();
 var commenthtml = $('.row-comment').html();
 var userlisthtml = $('.user-list-body').html();
+var newuserlisthtml = $('.new-user-body').html();
 getUser();
 followUserAction();
+newUserList();
 
 $('.row-post').remove();
 $('.row-activity').remove();
@@ -39,7 +52,8 @@ $('.compose').click(function(e) {
 
 });
 $('html').click(function(e) {
-    if(!$(e.target).closest('.compose').length && !$('.compose').hasClass("browse")){
+    var text =  $('.compose').text();
+    if(!$(e.target).closest('.compose').length && !$('.compose').hasClass("browse") && text.length == 0){
         var compose = $('.compose');
         if($('.compose-holder').html()){
             $(compose).html($('.compose-holder').html());
@@ -101,21 +115,21 @@ $('.userModal').click(function() {
 
             $.each( data.data, function( k, v ) {
 
-                user = $(userlisthtml);
-                $('.list-profile-image', user).attr('src',v.profile_image);
-                $('.list-profile-image', user).parent().attr('href',"user.html?user=" + v._id);
-                $('.fullname > a', user).html(v.fullname).attr('href', 'user.html?user=' + v._id);
-                $('.username > a', user).html("@" + v.username).attr('href', 'user.html?user=' + v._id);
-                $('.unfollow-user, .follow-user', user).attr('data-id',v._id);
+                userlist = $(userlisthtml);
+                $('.list-profile-image', userlist).attr('src',v.profile_image);
+                $('.list-profile-image', userlist).parent().attr('href',"user.html?user=" + v._id);
+                $('.fullname > a', userlist).html(v.fullname).attr('href', 'user.html?user=' + v._id);
+                $('.username > a', userlist).html("@" + v.username).attr('href', 'user.html?user=' + v._id);
+                $('.unfollow-user, .follow-user', userlist).attr('data-id',v._id);
                 if(v._id != JSON.parse($.cookie("krowd")).user._id){
                     if(v.relationship['following'] === true){
-                        $('.unfollow-user', user).show();
+                        $('.unfollow-user', userlist).show();
 
                     }else{
-                        $('.follow-user', user).show();
+                        $('.follow-user', userlist).show();
                     }
                 }
-                $('.user-list-body').append(user);
+                $('.user-list-body').append(userlist);
             });
             followUserAction();
         },
@@ -126,7 +140,7 @@ $('.userModal').click(function() {
                 error = {};
                 error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
             }
-            $('.content').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+            $('.content').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
         },
         complete: function(request, status) {
         },
@@ -141,6 +155,72 @@ $('.userModal').click(function() {
     });
 
 });
+
+
+function newUserList(){
+    reqUrl = apibase + "/user/list";
+    $('.new-user-body').html('');
+    $.support.cors = true;
+    $.ajax({
+        type: "GET",
+        url: reqUrl,
+        async: true,
+        headers: headers,
+        success: function(data, textStatus) {
+
+
+
+                $.each( data.items, function( k, v ) {
+                    if(v._id != JSON.parse($.cookie("krowd")).user._id && v.relationship['following'] !== true){
+                        userlist = $(newuserlisthtml);
+                        $('.list-profile-image', userlist).attr('src',v.profile_image);
+                        $('.list-profile-image', userlist).parent().attr('href',"user.html?user=" + v._id);
+                        $('.fullname', userlist).html(v.fullname).attr('href', 'user.html?user=' + v._id);
+                        $('.username', userlist).html("@" + v.username).attr('href', 'user.html?user=' + v._id);
+                        $('.unfollow-user, .follow-user', userlist).attr('data-id',v._id);
+                        if(v._id != JSON.parse($.cookie("krowd")).user._id){
+                            if(v.relationship['following'] === true){
+                                $('.unfollow-user', userlist).show();
+
+                            }else{
+                                $('.follow-user', userlist).show();
+                            }
+                        }
+                        $('.new-user-body').append(userlist);
+                    }
+                });
+                followUserAction();
+                
+                if($('.new-user-body > div').length === 0){
+                    $('.new-users').remove();
+                }else{
+                    $('.new-users').show();
+                }
+        },
+        error: function(e){
+            if(e.responseText){
+                error = JSON.parse(e.responseText);
+            }else{
+                error = {};
+                error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
+            }
+            $('.content').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+        },
+        complete: function(request, status) {
+        },
+        statusCode: {
+            200: function(data) {
+            }
+        },
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true
+    });
+
+
+}
+
 
 function followUserAction(){
     $('.follow-user').click(function() {
@@ -167,7 +247,7 @@ function followUserAction(){
                     error = {};
                     error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
                 }
-                $('.content').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+                $('.content').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
             },
             complete: function(request, status) {
             },
@@ -216,7 +296,7 @@ $('.unfollow-user').click(function() {
                 error = {};
                 error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
             }
-            $('.content').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+            $('.content').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
         },
         complete: function(request, status) {
         },
@@ -251,7 +331,7 @@ function getLikes(gid){
                 error = {};
                 error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
             }
-            $('.content').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+            $('.content').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
         },
         complete: function(request, status) {
         },
@@ -278,13 +358,18 @@ function statusPost(){
         headers: headers,
         success: function(data, textStatus) {
             var compose = $('.compose');
-            $(compose).html('Compose a Post');
+            if($('.compose-holder').html()){
+                $(compose).html($('.compose-holder').html());
+                $('.compose-holder').html('');
+            }
+            $('.fileinput').fileinput('reset');
             $(compose).removeClass("expanded");
             $(compose).parent().find('.tools, .buttons').hide();
+
             $('#post').modal('hide');
             buildPost(1,data);
             $(post).css('display','none');
-            console.log($('.stream .profile').length);
+            
             if($('.activity').length !== 0){
                 
             }
@@ -303,7 +388,7 @@ function statusPost(){
                 error = {};
                 error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
             }
-            $('.content').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+            $('.content').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
         },
         complete: function(request, status) {
         },
@@ -337,7 +422,7 @@ function getPost(aid){
                 error = {};
                 error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
             }
-            $('.content').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+            $('.content').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
         },
         complete: function(request, status) {
         },
@@ -381,7 +466,7 @@ function getPosts(type, query){
                 error = {};
                 error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
             }
-            $('.content').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+            $('.content').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
         },
         complete: function(request, status) {
         },
@@ -419,7 +504,7 @@ $('.post-like').click(function() {
                 error = {};
                 error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
             }
-            $('.content').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+            $('.content').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
         },
         complete: function(request, status) {
         },
@@ -459,7 +544,7 @@ $('.post-unlike').click(function() {
                 error = {};
                 error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
             }
-            $('.content').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+            $('.content').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
         },
         complete: function(request, status) {
         },
@@ -479,10 +564,13 @@ $('.post-comment').click(function(){
     $(this).closest(".post").find('.panel-collapse').collapse('show');
     $(this).closest(".post").find('.reply-input').focus();
 
-    $('html, body').animate({
-        scrollTop: $(this).closest(".post").find('.post-comment').offset().top
-    }, 200);
-    return false;
+    scrollTo($(this).closest(".post").find('.reply'));
+
+ 
+  return false;
+
+
+
 });
 $('.reply-input').focus(function() {
     if(!$('.reply-holder').html()){
@@ -590,11 +678,17 @@ return post;
 }
 
 
-function buildComment(comment, post, c){
+function buildComment(comment, post, c, direction){
+    
     $('.username', comment).html(c.from.username + " ");
     $('.username', comment).attr('href',"user.html?user=" + c.from._id);
     $('.usertext', comment).append(linkify_entities(c));
-    $('.row-comment', post).prepend($(comment).hide().fadeIn('slow'));
+
+    if(direction == "append"){
+        $('.row-comment', post).append($(comment).hide().fadeIn('slow'));
+    }else{
+        $('.row-comment', post).prepend($(comment).hide().fadeIn('slow'));
+    }
     $('.comment-profile-image', comment).attr("src",c.from.profile_image);
 $('.comment-profile-image', comment).attr("data-original-title", c.from.username).tooltip();
 $('.comment-profile-image', comment).parent().attr('href',"user.html?user=" + c.from._id);
@@ -619,6 +713,11 @@ $.ajax({
     data: data,
     headers: headers,
     success: function(data, textStatus) {
+        comment = $(commenthtml);
+        $('.comment').removeClass("transparent-bg");
+        $(comment).addClass("transparent-bg");
+        buildComment(comment, $('.post[data-id='+aid+']'), data.data[0], 'append');
+
         var reply = $('.reply-input');
          if($('.reply-holder').html()){
             $(reply).html($('.reply-holder').html());
@@ -626,6 +725,7 @@ $.ajax({
         }
         $(reply).removeClass("expanded");
         $(reply).parent().find('.tools, .buttons').hide();
+
     },
     error: function(e){
         if(e.responseText){
@@ -634,7 +734,7 @@ $.ajax({
             error = {};
             error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
         }
-        $('.content').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+        $('.content').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
     },
     complete: function(request, status) {
     },
@@ -660,9 +760,12 @@ function getComments(e, aid, query){
         success: function(data, textStatus) {
 
             if(data.returned > 0){
+                $('.comment').removeClass("transparent-bg");
+                comment = $(commenthtml);
                 $.each( data.data, function(a,c) {
-                    
-                    buildComment($(commenthtml), $(e).parent(), c);
+                    comment = $(commenthtml);
+                    $(comment).addClass("transparent-bg");
+                    buildComment(comment, $(e).parent(), c);
                 });
                 $(e).attr("data-page", parseInt($(e).attr("data-page"),10) + 1);
             }
@@ -679,7 +782,7 @@ function getComments(e, aid, query){
                 error = {};
                 error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
             }
-            $('.content').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+            $('.content').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
         },
         complete: function(request, status) {
         },
@@ -739,7 +842,7 @@ function getUser(){
                 error = {};
                 error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
             }
-            $('.content').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+            $('.content').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
         },
         complete: function(request, status) {
         },
@@ -817,7 +920,7 @@ function getActivity(query,newposts){
                 error = {};
                 error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
             }
-            $('.content').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+            $('.content').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
         },
         complete: function(request, status) {
         },
@@ -884,7 +987,7 @@ function checkToken(){
                 error = {};
                 error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
             }
-            $('.login').prepend('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+            $('.login').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
             $('.btn').removeAttr('disabled');
             $('.btn').toggleClass('loading disabled');
         },
@@ -909,3 +1012,20 @@ function setCursorToEnd(ele)
     sel.addRange(range);
     ele.focus();
   }
+
+function scrollTo(el){
+
+  var elOffset = el.offset().top;
+  var elHeight = el.height();
+  var windowHeight = $(window).height();
+  var offset;
+
+  if (elHeight < windowHeight) {
+    offset = elOffset - ((windowHeight / 2) - (elHeight / 2));
+  }
+  else {
+    offset = elOffset;
+  }
+
+  $.smoothScroll({ speed: 700 }, offset);
+}
