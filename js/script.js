@@ -85,6 +85,7 @@ $('#post').on('show.bs.modal', function (e) {
 });
 
 $('.submit-post').click(function(){
+    $(this).prop("disabled",true);
     statusPost();
 
 });
@@ -395,8 +396,10 @@ function statusPost(){
                 $('.stream').prepend($(post).fadeIn("Slow"));
             }
             $('.alert-banner > div > div').slideDown(200).delay(3000).slideUp(200);
+            $('.submit-post').prop("disabled",false);
         },
         error: function(e){
+            $('.submit-post').prop("disabled",false);  
             if(e.responseText){
                 error = JSON.parse(e.responseText);
             }else{
