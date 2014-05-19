@@ -380,7 +380,9 @@ function statusPost(){
             $(compose).parent().find('.tools, .buttons').hide();
 
             $('#post').modal('hide');
-            buildPost(1,data);
+            console.log();
+            count = $('.stream > div').length + 1;
+            buildPost(count,data);
             $(post).css('display','none');
             
             if($('.activity').length !== 0){
@@ -424,7 +426,8 @@ function getPost(aid){
         headers: headers,
         success: function(data, textStatus) {
             $.each( data, function( k, v ) {
-                buildPost(k,v);
+                count = $('.stream > div').length + 1;
+                buildPost(count,v);
             });
             postActions();
         },
@@ -462,7 +465,8 @@ function getPosts(type, query){
         async: true,
         success: function(data, textStatus) {
             $.each( data.items, function( k, v ) {
-                post = buildPost(k,v);
+                count = $('.stream > div').length + 1;
+                post = buildPost(count,v);
                 $('.stream').append(post).fadeIn("Slow");
             });
             $('.stream').attr("data-new", data.pagination.new);
@@ -911,12 +915,13 @@ function getActivity(query,newposts){
                 }
                 
                 if(v.verb == 'mention' || v.object.objectType == "comment"){
-
+                    count = $('.stream > div').length + 1;
                     if(v.object.json){
-                        post = buildPost(k,v.object.json);
+
+                        post = buildPost(count,v.object.json);
                         $('.test', activity).html(post);
                     }else if(v.target.json){
-                        post = buildPost(k,v.target.json);
+                        post = buildPost(count,v.target.json);
                         $('.test', activity).html(post);
                     }
 
