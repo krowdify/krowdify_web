@@ -453,7 +453,7 @@ function getPost(aid){
 
 }
 
-function getPosts(type, query){
+function getPosts(type, query, newposts){
     if(query){
         reqUrl = apibase + query;
     }else{
@@ -470,14 +470,29 @@ function getPosts(type, query){
             $.each( data.items, function( k, v ) {
                 count = $('.stream > div').length + 1;
                 post = buildPost(count,v);
-                $('.stream').append(post).fadeIn("Slow");
+                if(newposts){
+                    $('.stream-hidden').prepend(post);
+                    $('.number').html($('.stream-hidden > div').length);
+                    if($('.stream-hidden > div').length > 1){
+                        $('.suffix').html('s ');
+                    }
+                    $('.new-posts').fadeIn( "slow");
+                }else{
+                    $('.stream').append(post).fadeIn("Slow");
+                }
+
+
+                postActions(post);
+                
             });
+            console.log(data);
             $('.stream').attr("data-new", data.pagination.new);
             $('.stream').attr("data-next", data.pagination.next);
             $('.stream').attr("data-prev", data.pagination.prev);
 
+            setTimeout(function() { getPosts('me', data.pagination.new, 'new') }, 10000);
 
-            postActions();
+
         },
         error: function(e){
             if(e.responseText){
@@ -497,9 +512,9 @@ function getPosts(type, query){
     });
 }
 
-function postActions(){
-
-    $('.post-like').click(function() {
+function postActions(post){
+    console.log(post);
+    $('.post-like',post).click(function() {
         reqUrl = apibase + "/like/" + $(this).closest(".post").attr("data-id");
         self = this;
         $.support.cors = true;
@@ -540,7 +555,7 @@ function postActions(){
 return false;
 });
 
-$('.post-unlike').click(function() {
+$('.post-unlike', post).click(function() {
     self = this;
     reqUrl = apibase + "/like/" + $(this).closest(".post").attr("data-id");
     $.support.cors = true;
@@ -580,7 +595,7 @@ $('.post-unlike').click(function() {
 return false;
 });
 
-$('.post-comment').click(function(){
+$('.post-comment', post).click(function(){
     $(this).closest(".post").find('.panel-collapse').collapse('show');
     $(this).closest(".post").find('.reply-input').focus();
 
@@ -929,7 +944,7 @@ function getActivity(query,newposts){
                         post = buildPost(count,v.target.json);
                         $('.test', activity).html(post);
                     }
-
+                    postActions(activity);
                 }else{
                     $('.view-conversation', activity).remove();
                 }
@@ -938,7 +953,7 @@ function getActivity(query,newposts){
 $('.stream').attr("data-new", data.pagination.new);
 $('.stream').attr("data-next", data.pagination.next);
 $('.stream').attr("data-prev", data.pagination.prev);
-postActions();
+
 setTimeout(function() { getActivity($('.stream').attr('data-new'),'new'); }, 10000);
 },
 error: function(e){
