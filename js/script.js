@@ -1,13 +1,13 @@
 
 if($.cookie("css")) {
-    $("link#bootstrap").attr("href",$.cookie("css"));
+        $("link#bootstrap").attr("href",$.cookie("css"));
 }
 $(document).ready(function() {
-    $("#nav li a").click(function() {
-        $("link#bootstrap").attr("href",$(this).attr('rel'));
-        $.cookie("css",$(this).attr('rel'), {expires: 365, path: '/'});
-        return false;
-    });
+        $("#nav li a").click(function() {
+                $("link#bootstrap").attr("href",$(this).attr('rel'));
+                $.cookie("css",$(this).attr('rel'), {expires: 365, path: '/'});
+                return false;
+        });
 });
 $('[data-clampedwidth]').each(function () {
     var elem = $(this);
@@ -53,7 +53,7 @@ $('.compose').click(function(e) {
         if(user['_id'] != JSON.parse($.cookie("krowd")).user._id){
             $('.compose').html('');
             $(this).html('@' + user['username'] + '&nbsp;');
-                setCursorToEnd($(this).get(0));
+            setCursorToEnd($(this).get(0));
         }else{
             $('.compose').html('');
         }
@@ -101,7 +101,7 @@ $('.new-posts').click(function(){
     $.each( $('.stream-hidden > div'), function( k, v ) {
         $(v).hide().insertAfter(".new-posts").fadeIn("slow");
     });
-return false;
+    return false;
 });
 
 
@@ -184,53 +184,53 @@ function newUserList(){
 
 
 
-                $.each( data.items, function( k, v ) {
-                    if(v._id != JSON.parse($.cookie("krowd")).user._id && v.relationship['following'] !== true){
-                        userlist = $(newuserlisthtml);
-                        $('.list-profile-image', userlist).attr('src',v.profile_image);
-                        $('.list-profile-image', userlist).parent().attr('href',"user.html?user=" + v._id);
-                        $('.fullname', userlist).html(v.fullname).attr('href', 'user.html?user=' + v._id);
-                        $('.username', userlist).html("@" + v.username).attr('href', 'user.html?user=' + v._id);
-                        $('.unfollow-user, .follow-user', userlist).attr('data-id',v._id);
-                        if(v._id != JSON.parse($.cookie("krowd")).user._id){
-                            if(v.relationship['following'] === true){
-                                $('.unfollow-user', userlist).show();
+            $.each( data.items, function( k, v ) {
+                if(v._id != JSON.parse($.cookie("krowd")).user._id && v.relationship['following'] !== true){
+                    userlist = $(newuserlisthtml);
+                    $('.list-profile-image', userlist).attr('src',v.profile_image);
+                    $('.list-profile-image', userlist).parent().attr('href',"user.html?user=" + v._id);
+                    $('.fullname', userlist).html(v.fullname).attr('href', 'user.html?user=' + v._id);
+                    $('.username', userlist).html("@" + v.username).attr('href', 'user.html?user=' + v._id);
+                    $('.unfollow-user, .follow-user', userlist).attr('data-id',v._id);
+                    if(v._id != JSON.parse($.cookie("krowd")).user._id){
+                        if(v.relationship['following'] === true){
+                            $('.unfollow-user', userlist).show();
 
-                            }else{
-                                $('.follow-user', userlist).show();
-                            }
+                        }else{
+                            $('.follow-user', userlist).show();
                         }
-                        $('.new-user-body').append(userlist);
                     }
-                });
-                followUserAction();
-                
-                if($('.new-user-body > div').length === 0){
-                    $('.new-users').remove();
-                }else{
-                    $('.new-users').show();
+                    $('.new-user-body').append(userlist);
                 }
-        },
-        error: function(e){
-            if(e.responseText){
-                error = JSON.parse(e.responseText);
-            }else{
-                error = {};
-                error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
-            }
-            $('.content').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
-        },
-        complete: function(request, status) {
-        },
-        statusCode: {
-            200: function(data) {
-            }
-        },
-        xhrFields: {
-            withCredentials: true
-        },
-        crossDomain: true
-    });
+            });
+followUserAction();
+
+if($('.new-user-body > div').length === 0){
+    $('.new-users').remove();
+}else{
+    $('.new-users').show();
+}
+},
+error: function(e){
+    if(e.responseText){
+        error = JSON.parse(e.responseText);
+    }else{
+        error = {};
+        error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
+    }
+    $('.content').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+},
+complete: function(request, status) {
+},
+statusCode: {
+    200: function(data) {
+    }
+},
+xhrFields: {
+    withCredentials: true
+},
+crossDomain: true
+});
 
 
 }
@@ -323,7 +323,7 @@ $('.unfollow-user').click(function() {
         },
         crossDomain: true
     });
-return false;
+    return false;
 });
 }
 function getLikes(gid){
@@ -385,9 +385,9 @@ function statusPost(){
             count = $('.stream > div').length + 1;
             buildPost(count,data);
             $(post).css('display','none');
-            
+
             if($('.activity').length !== 0){
-                
+
             }
             else if($('.stream .profile').length !== 0){
                 $(post).insertAfter(".stream .profile").fadeIn("slow");
@@ -449,7 +449,7 @@ function getPost(aid){
             200: function(data) {
             }
         },
-});
+    });
 
 }
 
@@ -499,44 +499,44 @@ function getPosts(type, query){
 
 function postActions(){
 
-$('.post-like').click(function() {
-    reqUrl = apibase + "/like/" + $(this).closest(".post").attr("data-id");
-    self = this;
-    $.support.cors = true;
-    $.ajax({
-        type: "POST",
-        url: reqUrl,
-        async: true,
-        headers: headers,
-        success: function(data, textStatus) {
-            current = parseInt($(self).parentsUntil('.post').siblings('.panel-group').find('.stat-likes').text(), 10);
-            current = current + 1;
-            $(self).parentsUntil('.post').siblings('.panel-group').find('.stat-likes').text(current);
-            $(self).parentsUntil('.post').siblings('.panel-group').find('.glyphicon-heart').addClass('text-info');
-            $(self).hide();
-            $(self).parent().parent().find('.post-unlike').show();
+    $('.post-like').click(function() {
+        reqUrl = apibase + "/like/" + $(this).closest(".post").attr("data-id");
+        self = this;
+        $.support.cors = true;
+        $.ajax({
+            type: "POST",
+            url: reqUrl,
+            async: true,
+            headers: headers,
+            success: function(data, textStatus) {
+                current = parseInt($(self).parentsUntil('.post').siblings('.panel-group').find('.stat-likes').text(), 10);
+                current = current + 1;
+                $(self).parentsUntil('.post').siblings('.panel-group').find('.stat-likes').text(current);
+                $(self).parentsUntil('.post').siblings('.panel-group').find('.glyphicon-heart').addClass('text-info');
+                $(self).hide();
+                $(self).parent().parent().find('.post-unlike').show();
 
-        },
-        error: function(e){
-            if(e.responseText){
-                error = JSON.parse(e.responseText);
-            }else{
-                error = {};
-                error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
-            }
-            $('.content').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
-        },
-        complete: function(request, status) {
-        },
-        statusCode: {
-            200: function(data) {
-            }
-        },
-        xhrFields: {
-            withCredentials: true
-        },
-        crossDomain: true
-    });
+            },
+            error: function(e){
+                if(e.responseText){
+                    error = JSON.parse(e.responseText);
+                }else{
+                    error = {};
+                    error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
+                }
+                $('.content').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+            },
+            complete: function(request, status) {
+            },
+            statusCode: {
+                200: function(data) {
+                }
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true
+        });
 return false;
 });
 
@@ -586,8 +586,8 @@ $('.post-comment').click(function(){
 
     scrollTo($(this).closest(".post").find('.reply'));
 
- 
-  return false;
+
+    return false;
 
 
 
@@ -597,10 +597,10 @@ $('.reply-input').focus(function() {
         $('.reply-holder').html($(this).html());
     }
     if( $(this).text() == $('.reply-holder').text()) {
-        
+
         $('.reply-input').html('');
     }
-    
+
     $(this).addClass("expanded");
     $(this).parent().find('.tools, .buttons').show();
 });
@@ -608,13 +608,13 @@ $('.reply-input').focus(function() {
 $('.reply-input').blur(function() {
     if($(this).text().length === 0){
         var compose = $('.reply-input');
-         if($('.reply-holder').html()){
+        if($('.reply-holder').html()){
             $(compose).html($('.reply-holder').html());
             $('.reply-holder').html('');
         }
         $(compose).removeClass("expanded");
         $(compose).parent().find('.tools, .buttons').hide();
-        
+
     }
 });
 
@@ -641,69 +641,69 @@ $('.more').hover(function() {
 
 
 function buildPost(k,v){
-                post = $(posthtml);
-                $(post).attr('data-id', v._id);
-                $('.row-comment', post).html('');
-                $('.username', post).html(v.user.fullname + " @" + v.user.username);
-                $('.username', post).attr('href',"user.html?user=" + v.user._id);
-                if(typeof v.media[0].medium != "undefined"){
-                    $('.media', post).html('<img src="'+ v.media[0].medium.url +'">');
-                }else if(typeof v.media[0].full != "undefined"){
-                    $('.media', post).html('<img src="'+ v.media[0].full.url +'">');
-                }
-                var date = new Date(v.created_time);
-                
-                $('.timeago', post).attr("title", date.toISOString());
-                $('.timeago', post).timeago();
-                $('.usertext', post).html(linkify_entities(v));
-                $('.stream-profile-image', post).attr('src',v.user.profile_image);
-                $('.stream-profile-image', post).parent().attr('href',"user.html?user=" + v.user._id);
-                $('.toggle', post).attr('href','#collapse' + k);
-                $('.panel-collapse', post).attr("id",'collapse' + k);
-                $('.stat-comments', post).html(v.comments.count);
-                $('.stat-likes', post).html(v.likes.count);
+    post = $(posthtml);
+    $(post).attr('data-id', v._id);
+    $('.row-comment', post).html('');
+    $('.username', post).html(v.user.fullname + " @" + v.user.username);
+    $('.username', post).attr('href',"user.html?user=" + v.user._id);
+    if(typeof v.media[0].medium != "undefined"){
+        $('.media', post).html('<img src="'+ v.media[0].medium.url +'">');
+    }else if(typeof v.media[0].full != "undefined"){
+        $('.media', post).html('<img src="'+ v.media[0].full.url +'">');
+    }
+    var date = new Date(v.created_time);
 
-                $('.reply-profile-image', post).attr("src", apibase + "/user/"+ JSON.parse($.cookie("krowd")).client_id +"/"+ JSON.parse($.cookie("krowd")).user._id +"/profile_image");
-                if(v.likes.count > 0){
-                    if(v.user_likes === true) {
-                        $('.post-like', post).hide();
-                        $('.post-unlike', post).show();
-                        $('.panel-group .glyphicon-heart', post).addClass('text-info');
-                    }else{
-                        $('.post-unlike', post).hide();
-                        $('.post-like', post).show();
-                    }
-                    $.each( v.likes.data, function(b,l) {
-                        if(b < 7){
-                            $('.stream-likes', post).append('<a href="user.html?user=' + v.user._id +'"><img src="'+ l.profile_image + '" class="stream-comment-profile-image" data-toggle="tooltip" data-placement="top" title="" data-original-title="'+ l.username +'"></a>');
-                            $('.stream-likes img', post).tooltip();
-                        }
-                    });
-                }
-                if(v.comments.count <= 10){
-                    $(".load-more", post).hide();
-                }
-                if(v.comments.count > 0){
-                    $.each( v.comments.data, function(a,c) {
-                        buildComment($(commenthtml), post, c);
-                    });
-                }else{
-                    $(".load-more", post).hide();
-                }
-                if(v.comments.count > 0){
-                    $(".load-more", post).attr("data-aid",v._id);
-                    $(".load-more", post).attr("data-startid", v.comments.data[0]._id);
-                    $(".load-more", post).attr("data-page", 1);
-                    $(".load-more", post).attr("data-newpage", 1);
-                    $(".load-more", post).attr("data-limit", 10);
-                }
-return post;
+    $('.timeago', post).attr("title", date.toISOString());
+    $('.timeago', post).timeago();
+    $('.usertext', post).html(linkify_entities(v));
+    $('.stream-profile-image', post).attr('src',v.user.profile_image);
+    $('.stream-profile-image', post).parent().attr('href',"user.html?user=" + v.user._id);
+    $('.toggle', post).attr('href','#collapse' + k);
+    $('.panel-collapse', post).attr("id",'collapse' + k);
+    $('.stat-comments', post).html(v.comments.count);
+    $('.stat-likes', post).html(v.likes.count);
+
+    $('.reply-profile-image', post).attr("src", apibase + "/user/"+ JSON.parse($.cookie("krowd")).client_id +"/"+ JSON.parse($.cookie("krowd")).user._id +"/profile_image");
+    if(v.likes.count > 0){
+        if(v.user_likes === true) {
+            $('.post-like', post).hide();
+            $('.post-unlike', post).show();
+            $('.panel-group .glyphicon-heart', post).addClass('text-info');
+        }else{
+            $('.post-unlike', post).hide();
+            $('.post-like', post).show();
+        }
+        $.each( v.likes.data, function(b,l) {
+            if(b < 7){
+                $('.stream-likes', post).append('<a href="user.html?user=' + v.user._id +'"><img src="'+ l.profile_image + '" class="stream-comment-profile-image" data-toggle="tooltip" data-placement="top" title="" data-original-title="'+ l.username +'"></a>');
+                $('.stream-likes img', post).tooltip();
+            }
+        });
+    }
+    if(v.comments.count <= 10){
+        $(".load-more", post).hide();
+    }
+    if(v.comments.count > 0){
+        $.each( v.comments.data, function(a,c) {
+            buildComment($(commenthtml), post, c);
+        });
+    }else{
+        $(".load-more", post).hide();
+    }
+    if(v.comments.count > 0){
+        $(".load-more", post).attr("data-aid",v._id);
+        $(".load-more", post).attr("data-startid", v.comments.data[0]._id);
+        $(".load-more", post).attr("data-page", 1);
+        $(".load-more", post).attr("data-newpage", 1);
+        $(".load-more", post).attr("data-limit", 10);
+    }
+    return post;
 
 }
 
 
 function buildComment(comment, post, c, direction){
-    
+
     $('.username', comment).html(c.from.username + " ");
     $('.username', comment).attr('href',"user.html?user=" + c.from._id);
     $('.usertext', comment).append(linkify_entities(c));
@@ -714,13 +714,13 @@ function buildComment(comment, post, c, direction){
         $('.row-comment', post).prepend($(comment).hide().fadeIn('slow'));
     }
     $('.comment-profile-image', comment).attr("src",c.from.profile_image);
-$('.comment-profile-image', comment).attr("data-original-title", c.from.username).tooltip();
-$('.comment-profile-image', comment).parent().attr('href',"user.html?user=" + c.from._id);
+    $('.comment-profile-image', comment).attr("data-original-title", c.from.username).tooltip();
+    $('.comment-profile-image', comment).parent().attr('href',"user.html?user=" + c.from._id);
 
-var date = new Date(c.created_time);
-$('.timeago', comment).attr("title", date.toISOString());
-$('.timeago', comment).timeago();
-return comment;
+    var date = new Date(c.created_time);
+    $('.timeago', comment).attr("title", date.toISOString());
+    $('.timeago', comment).timeago();
+    return comment;
 }
 
 
@@ -743,7 +743,7 @@ $.ajax({
         buildComment(comment, $('.post[data-id='+aid+']'), data.data[0], 'append');
 
         var reply = $('.reply-input');
-         if($('.reply-holder').html()){
+        if($('.reply-holder').html()){
             $(reply).html($('.reply-holder').html());
             $('.reply-holder').html('');
         }
@@ -885,7 +885,7 @@ function getActivity(query,newposts){
     if(query){
         reqUrl = apibase + query;
     }else{
-       reqUrl = apibase + "/activity";
+        reqUrl = apibase + "/activity";
     }
     $.support.cors = true;
     $.ajax({
@@ -918,7 +918,7 @@ function getActivity(query,newposts){
                 }else{
                     $('.stream').append(activity);
                 }
-                
+
                 if(v.verb == 'mention' || v.object.objectType == "comment"){
                     count = $('.stream > div').length + 1;
                     if(v.object.json){
@@ -933,34 +933,34 @@ function getActivity(query,newposts){
                 }else{
                     $('.view-conversation', activity).remove();
                 }
-                
+
             });
-            $('.stream').attr("data-new", data.pagination.new);
-            $('.stream').attr("data-next", data.pagination.next);
-            $('.stream').attr("data-prev", data.pagination.prev);
-            postActions();
-            setTimeout(function() { getActivity($('.stream').attr('data-new'),'new'); }, 10000);
-        },
-        error: function(e){
-            if(e.responseText){
-                error = JSON.parse(e.responseText);
-            }else{
-                error = {};
-                error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
-            }
-            $('.content').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
-        },
-        complete: function(request, status) {
-        },
-        statusCode: {
-            200: function(data) {
-            }
-        },
-        xhrFields: {
-            withCredentials: true
-        },
-        crossDomain: true
-    });
+$('.stream').attr("data-new", data.pagination.new);
+$('.stream').attr("data-next", data.pagination.next);
+$('.stream').attr("data-prev", data.pagination.prev);
+postActions();
+setTimeout(function() { getActivity($('.stream').attr('data-new'),'new'); }, 10000);
+},
+error: function(e){
+    if(e.responseText){
+        error = JSON.parse(e.responseText);
+    }else{
+        error = {};
+        error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
+    }
+    $('.content').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+},
+complete: function(request, status) {
+},
+statusCode: {
+    200: function(data) {
+    }
+},
+xhrFields: {
+    withCredentials: true
+},
+crossDomain: true
+});
 }
 
 
@@ -1008,29 +1008,29 @@ function checkToken(){
                 $.cookie("krowd", JSON.stringify(data), { "expires": date, "path": "/" });
                 headers = {'Authorization': 'Token token="' + data['access_token'] + '"'};
             },
-        error: function(e){
-            if(e.responseText){
-                error = JSON.parse(e.responseText);
-            }else{
-                error = {};
-                error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
+            error: function(e){
+                if(e.responseText){
+                    error = JSON.parse(e.responseText);
+                }else{
+                    error = {};
+                    error.error.error_message = 'Something went horribly wrong, please try again in a bit.';
+                }
+                $('.login').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
+                $('.btn').removeAttr('disabled');
+                $('.btn').toggleClass('loading disabled');
+            },
+            complete: function(request, status) {
+            },
+            statusCode: {
+                200: function(data) {
+                }
             }
-            $('.login').prepend('<div class="alert alert-warning col-md-10 col-md-offset-1"><button type="button" class="close" data-dismiss="alert">×</button>'+error.error.error_message+'</div>');
-            $('.btn').removeAttr('disabled');
-            $('.btn').toggleClass('loading disabled');
-        },
-        complete: function(request, status) {
-        },
-        statusCode: {
-            200: function(data) {
-            }
-        }
         });
-    }
-    setTimeout(function() { checkToken(); }, 10000);
+}
+setTimeout(function() { checkToken(); }, 10000);
 }
 function setCursorToEnd(ele)
-  {
+{
     var range = document.createRange();
     var sel = window.getSelection();
 
@@ -1039,21 +1039,21 @@ function setCursorToEnd(ele)
     sel.removeAllRanges();
     sel.addRange(range);
     ele.focus();
-  }
+}
 
 function scrollTo(el){
 
-  var elOffset = el.offset().top;
-  var elHeight = el.height();
-  var windowHeight = $(window).height();
-  var offset;
+    var elOffset = el.offset().top;
+    var elHeight = el.height();
+    var windowHeight = $(window).height();
+    var offset;
 
-  if (elHeight < windowHeight) {
-    offset = elOffset - ((windowHeight / 2) - (elHeight / 2));
-  }
-  else {
-    offset = elOffset;
-  }
+    if (elHeight < windowHeight) {
+        offset = elOffset - ((windowHeight / 2) - (elHeight / 2));
+    }
+    else {
+        offset = elOffset;
+    }
 
-  $.smoothScroll({ speed: 700 }, offset);
+    $.smoothScroll({ speed: 700 }, offset);
 }

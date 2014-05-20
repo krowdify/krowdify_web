@@ -20,9 +20,7 @@ body {
     left: 35px;
 }
 .navbar {
-    min-height: 50px;
-    height: 50px;
-    border-bottom: none;
+
 }
 
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
@@ -63,6 +61,65 @@ body {
     height: 50px;
 }
 
+
+.navbar-header {
+
+}
+
+.navbar-right {
+    font-size: 15px;
+}
+
+.navbar-right > li > a > span {
+    padding: 5px;
+    top: -3px;
+    font-size: 20px;
+}
+
+.navbar-right > li > a, .navbar-right > li > a > span.border {
+    opacity: .7;
+}
+
+.navbar-right > li > a > span.border {
+    border-radius: 8px;
+    border: 2px solid #fff;
+    padding: 5px;
+    top: 10px;
+    font-size: 15px;
+}
+
+.navbar-inverse .navbar-right > li > a > .glyphicon {
+    width: 30px;
+}
+
+.navbar-inverse .navbar-right > li:hover > a ,  .navbar-inverse .navbar-right > li:focus > a {
+    height: 50px;
+    background-color: transparent;
+    border-bottom: none;
+    transition: all .15s ease-in-out;
+    opacity: 1;
+}
+
+.navbar-inverse .navbar-right > li:hover > a > span.border ,  .navbar-inverse .navbar-right > li:focus > a > span.border {
+    transition: all .15s ease-in-out;
+    opacity: 1;
+}
+.navbar-right > li > a {
+    text-indent: -9999px;
+    overflow: hidden;
+    padding-left:50px;
+    line-height: 25px;
+    width:30px;
+    height:50px;
+}
+.navbar-right > li > a > .glyphicon {
+    position: absolute;
+    left: 17px;
+    top: 15px;
+    text-indent: 0;
+    font-size: 16px;
+}
+
 @media (max-width: 767px) {
     .navbar-nav > li > a {
         text-indent: -9999px;
@@ -87,53 +144,26 @@ body {
     .navbar-inverse .navbar-right > li > a > .border {
         top: 10px;
         font-size: 15px;
-    };
+    }
+    .navbar-right {
+        float:none;
+    }
+    .navbar-right > li {
+        float:none;
+    }
+    .navbar-right > li > a {
+        text-indent: 0;
+        overflow: visible;
+        width: 100%;
+    }
+    .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+        background-color: transparent;
+        color: #ffffff;
+    }
+    .navbar-collapse {
+        max-height: 400px; 
+    }
 }
-
-.navbar-header {
-    width: 100%;
-}
-
-.navbar-right {
-    float: right!important;
-    font-size: 15px;
-}
-
-.navbar-right > li > a > span {
-    padding: 5px;
-    top: -3px;
-    font-size: 20px;
-}
-
-.navbar-right > li > a, .navbar-right > li > a > span.border {
-    opacity: .7;
-}
-
-.navbar-right > li > a > span.border {
-    border-radius: 8px;
-    border: 2px solid #fff;
-    padding: 5px;
-    top: -4px;
-    font-size: 15px;
-}
-
-.navbar-inverse .navbar-right > li > a > .glyphicon {
-    width: 30px;
-}
-
-.navbar-inverse .navbar-right > li:hover > a ,  .navbar-inverse .navbar-right > li:focus > a {
-    height: 50px;
-    background-color: transparent;
-    border-bottom: none;
-    transition: all .15s ease-in-out;
-    opacity: 1;
-}
-
-.navbar-inverse .navbar-right > li:hover > a > span.border ,  .navbar-inverse .navbar-right > li:focus > a > span.border {
-    transition: all .15s ease-in-out;
-    opacity: 1;
-}
-
 .profile {
     padding:0;
 }
@@ -144,7 +174,7 @@ body {
     top: -30px;
     border-radius: 5px;
     border: 4px solid #ECEDED;
-    
+
 }
 
 @media (max-width: 992px) {
@@ -167,7 +197,7 @@ body {
     min-height:21px;
 }
 .profile, .post, .activity, .new-users {
-    
+
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -228,7 +258,7 @@ body {
 
 }
 .stats > tbody > tr > td.followers:hover, .stats > tbody > tr > td.following:hover {
-   cursor: pointer;
+    cursor: pointer;
 }
 
 .stream .post .panel-body > .uname, .stream .post .panel-body > div.usertext, .stream .post .panel-body > div.media {
@@ -274,8 +304,8 @@ body {
 }
 .stream-likes {
     margin-top: 10px;
-padding-left: 0;
-padding-right: 5px;
+    padding-left: 0;
+    padding-right: 5px;
 }
 .post-nav {
     list-style: none;
@@ -289,7 +319,7 @@ padding-right: 5px;
 .panel-group, .panel-body {
     padding: 10px;
     margin: 0;
-    
+
 }
 
 .stats-post {
@@ -335,9 +365,9 @@ padding-right: 5px;
     min-height:24px;
 }
 .user-list-row, .new-user-list-row  {
-min-height: 40px;
-padding: 7px 0px;
-position: relative;
+    min-height: 40px;
+    padding: 7px 0px;
+    position: relative;
 }
 .reply > .reply-profile-image {
     left: 18px;
@@ -349,7 +379,7 @@ position: relative;
 }
 .comment {
     margin-top: 10px;
-        min-height:40px;
+    min-height:40px;
     padding-left:0;
 }
 
@@ -389,7 +419,7 @@ position: relative;
     margin-top:20px;
     background-color: rgba(255,255,255,.5);
     min-height: 40px;
-    
+
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -471,10 +501,10 @@ position: relative;
 }
 
 .arrow-box {
-position:absolute;
-left: 35px;
-top: -20px;
-z-index: 1000;
+    position:absolute;
+    left: 35px;
+    top: -20px;
+    z-index: 1000;
 }
 
 .arrow-box:after, .arrow-box:before {
@@ -560,9 +590,9 @@ z-index: 1000;
 .new-posts {
     display:none;
     text-align: center;
-border-radius: 3px;
-padding: 3px;
-margin-bottom: 10px;
+    border-radius: 3px;
+    padding: 3px;
+    margin-bottom: 10px;
     -webkit-animation: pusate 1s infinite alternate;
     -moz-animation: pusate 1s infinite alternate;
     -animation: pusate 1s infinite alternate;
@@ -588,20 +618,20 @@ margin-bottom: 10px;
     position:relative;
 }
 .transparent-bg:hover:before{
-  opacity:.3;
-  cursor:pointer;
+    opacity:.3;
+    cursor:pointer;
 }
 .transparent-bg:before{
-  display:block;
-  content:"";
-  position:absolute;
-  z-index:0;
-  background:rgb(255,255,255);
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  opacity:.1;
+    display:block;
+    content:"";
+    position:absolute;
+    z-index:0;
+    background:rgb(255,255,255);
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    opacity:.1;
 }
 
 table {
@@ -610,26 +640,26 @@ table {
 
 .load-more {
 
-padding-top: 10px;
+    padding-top: 10px;
 }
 
 .alert-warning {
     width: calc(100% - 2%);
-margin-top: -25px;
-margin-bottom: 60px;
+    margin-top: -25px;
+    margin-bottom: 60px;
 
 }
 
 
 @media (min-width: 992px) {
     .alert-warning {
-    width: calc(100% - 18%);
+        width: calc(100% - 18%);
     }
 }
 
 @media (max-width: 768px) {
     .alert-warning {
-    width: 100%;
+        width: 100%;
     }
     .affix {
         position:static;
