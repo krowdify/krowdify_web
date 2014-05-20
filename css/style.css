@@ -51,8 +51,13 @@ body {
 
 .navbar-header .navbar-logo {
     margin-top: 5px;
+    float:center;
 }
 
+.navbar-toggle {
+    margin-right:0;
+padding: 9px 0;
+}
 .navbar-nav > li > a {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -63,7 +68,7 @@ body {
 
 
 .navbar-header {
-
+    width:80%;
 }
 
 .navbar-right {
@@ -162,6 +167,9 @@ body {
     }
     .navbar-collapse {
         max-height: 400px; 
+    }
+    .navbar-header {
+        width:100%;
     }
 }
 .profile {
