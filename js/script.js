@@ -646,7 +646,9 @@ function buildPost(k,v){
                 $('.row-comment', post).html('');
                 $('.username', post).html(v.user.fullname + " @" + v.user.username);
                 $('.username', post).attr('href',"user.html?user=" + v.user._id);
-                if(typeof v.media[0].full != "undefined"){
+                if(typeof v.media[0].medium != "undefined"){
+                    $('.media', post).html('<img src="'+ v.media[0].medium.url +'">');
+                }else if(typeof v.media[0].full != "undefined"){
                     $('.media', post).html('<img src="'+ v.media[0].full.url +'">');
                 }
                 var date = new Date(v.created_time);
