@@ -607,7 +607,7 @@ $('.post-comment', post).click(function(){
 
 
 });
-$('.reply-input').focus(function() {
+$('.reply-input', post).focus(function() {
     if(!$('.reply-holder').html()){
         $('.reply-holder').html($(this).html());
     }
@@ -620,7 +620,7 @@ $('.reply-input').focus(function() {
     $(this).parent().find('.tools, .buttons').show();
 });
 
-$('.reply-input').blur(function() {
+$('.reply-input', post).blur(function() {
     if($(this).text().length === 0){
         var compose = $('.reply-input');
         if($('.reply-holder').html()){
@@ -633,20 +633,20 @@ $('.reply-input').blur(function() {
     }
 });
 
-$('.reply-input').keyup(function() {
+$('.reply-input', post).keyup(function() {
     var text =  $(this).text();
     $(this).parent().find('.charcounter').html(text.length);
 });
 
-$('.submit-comment').click(function(){
+$('.submit-comment', post).click(function(){
     commentPost($(this).closest(".post").attr("data-id"));
     return false;
 });
-$('.load-more').on('click',function(e) {
+$('.load-more', post).on('click',function(e) {
     getComments($(this), $(this).attr('data-aid'), {"startid": $(this).attr('data-startid'), "page": parseInt($(this).attr('data-page'), 10) + 1, "newpage": $(this).attr('data-newpage'), "limit": $(this).attr('data-limit')});
     return false;
 });
-$('.more').hover(function() {
+$('.more', post).hover(function() {
     $(this).removeClass('label-info').addClass('label-primary');
 
 }, function() {
