@@ -381,7 +381,7 @@ function statusPost(){
             $(compose).parent().find('.tools, .buttons').hide();
 
             $('#post').modal('hide');
-            console.log();
+            
             count = $('.stream > div').length + 1;
             buildPost(count,data);
             $(post).css('display','none');
@@ -485,10 +485,15 @@ function getPosts(type, query, newposts){
                 postActions(post);
                 
             });
-            console.log(data);
-            $('.stream').attr("data-new", data.pagination.new);
-            $('.stream').attr("data-next", data.pagination.next);
-            $('.stream').attr("data-prev", data.pagination.prev);
+            
+            if(newposts){
+                $('.stream').attr("data-new", data.pagination.new);
+            }else{
+                $('.stream').attr("data-new", data.pagination.new);
+                $('.stream').attr("data-next", data.pagination.next);
+                $('.stream').attr("data-prev", data.pagination.prev);
+            }
+            
 
             setTimeout(function() { getPosts('me', data.pagination.new, 'new') }, 10000);
 
@@ -513,7 +518,6 @@ function getPosts(type, query, newposts){
 }
 
 function postActions(post){
-    console.log(post);
     $('.post-like',post).click(function() {
         reqUrl = apibase + "/like/" + $(this).closest(".post").attr("data-id");
         self = this;

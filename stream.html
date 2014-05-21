@@ -325,6 +325,8 @@ oooooo
     getPosts('','');
     $(window).scroll(function() {
         if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+            console.log($('.stream').attr('data-next'));
+
             if($('.stream').attr('data-next')){
                 getPosts('',$('.stream').attr('data-next'));
             }
