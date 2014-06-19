@@ -183,6 +183,8 @@ $('.login .btn').on('click',function(e) {
             $('.btn').toggleClass('loading disabled');
         },
         complete: function(request, status) {
+            $('.btn').removeAttr('disabled');
+            $('.btn').toggleClass('loading disabled');
         },
         statusCode: {
             200: function(data) {

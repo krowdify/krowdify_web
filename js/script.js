@@ -528,10 +528,10 @@ function postActions(post){
             async: true,
             headers: headers,
             success: function(data, textStatus) {
-                current = parseInt($(self).parentsUntil('.post').siblings('.panel-group').find('.stat-likes').text(), 10);
+                current = parseInt($(self).parentsUntil('.post').siblings('.panel-footer').find('.stat-likes').text(), 10);
                 current = current + 1;
-                $(self).parentsUntil('.post').siblings('.panel-group').find('.stat-likes').text(current);
-                $(self).parentsUntil('.post').siblings('.panel-group').find('.glyphicon-heart').addClass('text-info');
+                $(self).parentsUntil('.post').siblings('.panel-footer').find('.stat-likes').text(current);
+                $(self).parentsUntil('.post').siblings('.panel-footer').find('.glyphicon-heart').addClass('text-info');
                 $(self).hide();
                 $(self).parent().parent().find('.post-unlike').show();
 
@@ -569,10 +569,10 @@ $('.post-unlike', post).click(function() {
         async: true,
         headers: headers,
         success: function(data, textStatus) {
-            current = parseInt($(self).parentsUntil('.post').siblings('.panel-group').find('.stat-likes').text(), 10);
+            current = parseInt($(self).parentsUntil('.post').siblings('.panel-footer').find('.stat-likes').text(), 10);
             current = current - 1;
-            $(self).parentsUntil('.post').siblings('.panel-group').find('.stat-likes').text(current);
-            $(self).parentsUntil('.post').siblings('.panel-group').find('.glyphicon-heart').removeClass('text-info');
+            $(self).parentsUntil('.post').siblings('.panel-footer').find('.stat-likes').text(current);
+            $(self).parentsUntil('.post').siblings('.panel-footer').find('.glyphicon-heart').removeClass('text-info');
             $(self).hide();
             $(self).parent().parent().find('.post-like').show();
         },
@@ -684,10 +684,10 @@ function buildPost(k,v){
 
     $('.reply-profile-image', post).attr("src", apibase + "/user/"+ JSON.parse($.cookie("krowd")).client_id +"/"+ JSON.parse($.cookie("krowd")).user._id +"/profile_image");
     if(v.likes.count > 0){
-        if(v.user_likes === true) {
+        if(v.likes.user_likes === true) {
             $('.post-like', post).hide();
             $('.post-unlike', post).show();
-            $('.panel-group .glyphicon-heart', post).addClass('text-info');
+            $('.panel-footer .glyphicon-heart', post).addClass('text-info');
         }else{
             $('.post-unlike', post).hide();
             $('.post-like', post).show();
